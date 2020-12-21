@@ -1,0 +1,16 @@
+{
+  "name": "buildkite-new-build-branch-helper",
+  "version": "0.0.1",
+  "description": "find the first branch on the page and put it in the new build place",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "js": [
+        "src/inject/buildkite-new-build-branch-helper.js"
+      ],
+      "matches": [
+        "https://buildkite.com/*"
+      ]
+    }
+  ]
+}
