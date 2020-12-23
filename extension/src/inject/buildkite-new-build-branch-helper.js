@@ -24,19 +24,23 @@ const getAnElementProbably = (selectors) => selectors
   .find(identity);
 
 const helpMeBranchHelper = (mutationList, observer) => {
-  // Use traditional 'for loops' for IE 11
-  for(const mutation of mutationList) {
-    if (mutation.type === 'childList') {
-      const branchInputSelector = 'input[name="build[branch]"]';
-      const branchInput = getAnElementProbably([branchInputSelector]);
-      if (!branchInput) {
-        return;
-      }
-
-      const imHelping = findABranch();
-      branchInput.value = imHelping;
+  if (mutationList.some(probablyClickedNewBuild)) {
+    const branchInputSelector = 'input[name="build[branch]"]';
+    const branchInput = getAnElementProbably([branchInputSelector]);
+    if (!branchInput) {
+      return;
     }
+
+    const imHelping = findABranch();
+    branchInput.value = imHelping;
   }
+};
+
+const probablyClickedNewBuild = ({type, addedNodes }) => {
+  const nameOfClassOnDivWhenYouClickNewBuild = 'Dialog__Wrapper';
+  const probablyAdded = Array.from(addedNodes).some((node) => node.classList.contains(nameOfClassOnDivWhenYouClickNewBuild));
+
+  return type === 'childList' && probablyAdded;
 };
 
 const findABranch = () => getAnElementProbably([
@@ -47,4 +51,4 @@ const findABranch = () => getAnElementProbably([
 const identity = it => it;
 
 const observer = doTheThing();
-window.onbeforeunload = () => observer.disconnect();
+window.onbeforeunload = observer.disconnect.bind(observer);
