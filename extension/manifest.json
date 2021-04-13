@@ -1,7 +1,7 @@
 {
   "name": "Buildkite New Build Branch Helper",
-  "version": "0.0.2",
-  "description": "find the first branch on the page and put it in the new build place",
+  "version": "0.1.0",
+  "description": "help you with branches and env vars when making a new buildkite branch",
   "manifest_version": 2,
   "content_scripts": [
     {
