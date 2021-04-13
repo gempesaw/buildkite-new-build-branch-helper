@@ -6,6 +6,9 @@ const doTheThing = () => {
     '#pipeline-header',
   ];
   const parentElem = getAnElementProbably(parentSelectors);
+  if (!parentElem) {
+    return null;
+  }
 
   const observeConfig = {
     attribute: false,
