@@ -1,6 +1,6 @@
 {
   "name": "Buildkite New Build Branch Helper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "help you with branches and env vars when making a new buildkite branch",
   "manifest_version": 2,
   "content_scripts": [
