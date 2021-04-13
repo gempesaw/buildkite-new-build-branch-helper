@@ -81,4 +81,6 @@ const findABranch = () => getAnElementProbably([
 const identity = it => it;
 
 const observer = doTheThing();
-window.onbeforeunload = observer.disconnect.bind(observer);
+if (observer) {
+  window.onbeforeunload = observer.disconnect.bind(observer);
+}
