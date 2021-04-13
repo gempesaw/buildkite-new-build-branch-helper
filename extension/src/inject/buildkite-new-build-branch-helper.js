@@ -47,7 +47,7 @@ const makeEnvironmentVariablesSticky = (mutationList, observer) => {
     return;
   }
 
-  const localStorageKeyWithSlug = `${ BK_ENV_VAR_PREFIX }${window.location.pathname.split('/').reverse()[0]}`;
+  const localStorageKeyWithSlug = `${ BK_ENV_VAR_PREFIX }${window.location.pathname.split('/')[2]}`;
   const imHelping = window.localStorage[localStorageKeyWithSlug] || '';
   if (imHelping) {
     detailsInput.setAttribute('open', true);
